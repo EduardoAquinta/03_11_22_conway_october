@@ -16,29 +16,17 @@ def conway_rule(cell,number_of_living_neighbours)
 end
 
 def number_of_living_neighbours(grid,row:,column:)
-  neighbours = []
+  above = grid[row - 1] unless row == 0
+  below = grid[row + 1]
 
-  left_edge = column == 0
-  top_edge = row == 0
+  left = column - 1 unless column == 0
+  right = column + 1
 
-  current_row = grid[row]
-  row_above = grid[row - 1] unless top_edge
-  row_below = grid[row + 1]
+  dont_count_self = grid[row][column] == :alive ? -1 : 0
 
-  neighbours << current_row[column + 1]
-  neighbours << current_row[column - 1] unless left_edge
-
-  if row_above
-    neighbours << row_above[column]
-    neighbours << row_above[column + 1]
-    neighbours << row_above[column - 1] unless left_edge
+  dont_count_self + [above, grid[row], below].compact.sum do |row|
+    [left, column, right].compact.count do |column|
+      row[column] == :alive
+    end
   end
-
-  if row_below
-    neighbours << row_below[column]
-    neighbours << row_below[column + 1]
-    neighbours << row_below[column - 1] unless left_edge
-  end
-
-  neighbours.count(:alive)
 end
