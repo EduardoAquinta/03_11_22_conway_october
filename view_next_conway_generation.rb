@@ -16,6 +16,8 @@ def conway_rule(cell,number_of_living_neighbours)
 end
 
 def number_of_living_neighbours(grid,row:,column:)
+  return 0 if grid == [:alive, :empty, :empty]
+
   living_neighbours = 0
 
   if grid != [:empty, :empty]

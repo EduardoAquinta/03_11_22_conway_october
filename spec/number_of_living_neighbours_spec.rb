@@ -18,4 +18,10 @@ describe "#number_of_living_neighbours" do
     result = number_of_living_neighbours(three_by_one_grid, row: 0, column: 1)
     expect(result).to be_zero
   end
+
+  it "returns zero if the live neighbour is distant" do
+    three_by_one_grid = [:alive, :empty, :empty]
+    result = number_of_living_neighbours(three_by_one_grid, row: 0, column: 2)
+    expect(result).to be_zero
+  end
 end
