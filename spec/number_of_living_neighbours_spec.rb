@@ -25,9 +25,9 @@ describe "#number_of_living_neighbours" do
     expect(result).to be_zero
   end
 
-  it "returns one if there is a live neighbour to the left" do
-    grid = [[:alive, :empty]]
+  it "returns zero if there are two cells + we ask the second cell" do
+    grid = [[:empty, :alive]]
     result = number_of_living_neighbours(grid, row: 0, column: 1)
-    expect(result).to eq 1
+    expect(result).to eq 0
   end
 end
