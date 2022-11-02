@@ -22,17 +22,18 @@ def number_of_living_neighbours(grid,row:,column:)
   top_edge = row == 0
 
   current_row = grid[row]
+  row_above = grid[row - 1] unless top_edge
+  row_below = grid[row + 1]
+
   neighbours << current_row[column + 1]
   neighbours << current_row[column - 1] unless left_edge
 
-  row_above = grid[row - 1] unless top_edge
   if row_above
     neighbours << row_above[column]
     neighbours << row_above[column + 1]
     neighbours << row_above[column - 1] unless left_edge
   end
 
-  row_below = grid[row + 1]
   if row_below
     neighbours << row_below[column]
     neighbours << row_below[column + 1]
