@@ -89,4 +89,51 @@ describe "#number_of_living_neighbours" do
     result = number_of_living_neighbours(grid, row: 1, column: 1)
     expect(result).to eq 1
   end
+
+  it "counts top-right neighbours" do
+    grid = [
+      [:empty, :alive],
+      [:empty, :empty]
+    ]
+    result = number_of_living_neighbours(grid, row: 1, column: 0)
+    expect(result).to eq 1
+  end
+
+  it "counts bottom-right neighbours" do
+    grid = [
+      [:empty, :empty],
+      [:empty, :alive]
+    ]
+    result = number_of_living_neighbours(grid, row: 0, column: 0)
+    expect(result).to eq 1
+  end
+
+  it "counts bottom-left neighbours" do
+    grid = [
+      [:empty, :empty],
+      [:alive, :empty]
+    ]
+    result = number_of_living_neighbours(grid, row: 0, column: 1)
+    expect(result).to eq 1
+  end
+
+  it "counts four diagonal neighbours" do
+    grid = [
+      [:alive, :empty, :alive],
+      [:empty, :empty, :empty],
+      [:alive, :empty, :alive]
+    ]
+    result = number_of_living_neighbours(grid, row: 1, column: 1)
+    expect(result).to eq 4
+  end
+
+  it "does not count itself as an alive neighbour" do
+    grid = [
+      [:empty, :empty, :empty],
+      [:empty, :alive, :empty],
+      [:empty, :empty, :empty]
+    ]
+    result = number_of_living_neighbours(grid, row: 1, column: 1)
+    expect(result).to eq 0
+  end
 end
