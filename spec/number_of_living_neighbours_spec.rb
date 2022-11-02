@@ -136,4 +136,15 @@ describe "#number_of_living_neighbours" do
     result = number_of_living_neighbours(grid, row: 1, column: 1)
     expect(result).to eq 0
   end
+
+  it "counts correctly in a non-symmetrical grid" do
+    grid = [
+      [:empty, :empty, :empty, :empty],
+      [:empty, :alive, :empty, :empty],
+      [:empty, :empty, :empty, :empty],
+      [:empty, :empty, :alive, :empty]
+    ]
+    result = number_of_living_neighbours(grid, row: 2, column: 1)
+    expect(result).to eq 2
+  end
 end
