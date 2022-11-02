@@ -24,4 +24,10 @@ describe "#number_of_living_neighbours" do
     result = number_of_living_neighbours(grid, row: 0, column: 2)
     expect(result).to be_zero
   end
+
+  it "returns one if there is a live neighbour to the left" do
+    grid = [[:alive, :empty]]
+    result = number_of_living_neighbours(grid, row: 0, column: 1)
+    expect(result).to eq 1
+  end
 end
