@@ -17,8 +17,9 @@ end
 
 def number_of_living_neighbours(grid,row:,column:)
   living_neighbours = 0
+  row = grid[0]
 
-  if grid[-1] == :alive
+  if row[-1] == :alive
     living_neighbours += 1
   else
     nil
