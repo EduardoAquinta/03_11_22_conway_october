@@ -18,12 +18,18 @@ end
 def number_of_living_neighbours(grid,row:,column:)
   neighbours = []
 
+  left_edge = column == 0
+  top_edge = row == 0
+
   current_row = grid[row]
   neighbours << current_row[column + 1]
-  neighbours << current_row[column - 1] unless column == 0
+  neighbours << current_row[column - 1] unless left_edge
 
-  row_above = grid[row - 1] unless row == 0
-  neighbours << row_above[column] if row_above
+  row_above = grid[row - 1] unless top_edge
+  if row_above
+    neighbours << row_above[column]
+    neighbours << row_above[column - 1] unless left_edge
+  end
 
   row_below = grid[row + 1]
   neighbours << row_below[column] if row_below

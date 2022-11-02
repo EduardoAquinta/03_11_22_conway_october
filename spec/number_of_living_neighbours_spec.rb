@@ -80,4 +80,13 @@ describe "#number_of_living_neighbours" do
     result = number_of_living_neighbours(grid, row: 1, column: 0)
     expect(result).to eq 1
   end
+
+  it "counts top-left neighbours" do
+    grid = [
+      [:alive, :empty],
+      [:empty, :empty]
+    ]
+    result = number_of_living_neighbours(grid, row: 1, column: 1)
+    expect(result).to eq 1
+  end
 end
