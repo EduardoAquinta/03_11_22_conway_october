@@ -42,4 +42,33 @@ describe "#number_of_living_neighbours" do
     result = number_of_living_neighbours(grid, row: 0, column: 1)
     expect(result).to eq 1
   end
+
+  it "counts neighbours below" do
+    grid = [
+      [:empty],
+      [:alive]
+    ]
+    result = number_of_living_neighbours(grid, row: 0, column: 0)
+    expect(result).to eq 1
+  end
+
+  it "counts neighbours below, even with empty space" do
+    grid = [
+      [:empty],
+      [:empty],
+      [:alive]
+    ]
+    result = number_of_living_neighbours(grid, row: 1, column: 0)
+    expect(result).to eq 1
+  end
+
+  it "counts in the current row" do
+    grid = [
+      [:empty, :empty],
+      [:empty, :empty],
+      [:empty, :alive]
+    ]
+    result = number_of_living_neighbours(grid, row: 2, column: 0)
+    expect(result).to eq 1
+  end
 end

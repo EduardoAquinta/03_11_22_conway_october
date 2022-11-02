@@ -17,16 +17,27 @@ end
 
 def number_of_living_neighbours(grid,row:,column:)
   living_neighbours = 0
-  row = grid[0]
 
-  right_neighbour = row[column + 1]
-  left_neighbour = row[column - 1] unless column == 0
+  current_row = grid[row]
+
+  right_neighbour = current_row[column + 1]
+  left_neighbour = current_row[column - 1] unless column == 0
 
   if right_neighbour == :alive
     living_neighbours += 1
   end
 
   if left_neighbour == :alive
+    living_neighbours += 1
+  end
+
+  row_below = grid[row + 1]
+
+  if grid[row + 1]
+    south_neighbour = grid[row + 1][column]
+  end
+
+  if south_neighbour == :alive
     living_neighbours += 1
   end
 
