@@ -6,4 +6,10 @@ describe "#number_of_living_neighbours" do
     number_of_neighbours = number_of_living_neigbours(two_by_one_grid,row: 0,column: 0)
     expect(number_of_neighbours).to eq 1
   end
+
+  it "returns zero if there is no live neighbour to the right" do
+    two_by_one_grid = [:empty, :empty]
+    result = number_of_living_neigbours(two_by_one_grid, row: 0, column: 0)
+    expect(result).to be_zero
+  end
 end
