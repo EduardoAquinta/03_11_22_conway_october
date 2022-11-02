@@ -19,11 +19,12 @@ def number_of_living_neighbours(grid,row:,column:)
   neighbours = []
 
   current_row = grid[row]
+  row_below = grid[row + 1]
 
   neighbours << current_row[column + 1]
   neighbours << current_row[column - 1] unless column == 0
 
-  neighbours << grid[row + 1][column] if grid[row + 1]
+  neighbours << row_below[column] if row_below
 
   neighbours.count(:alive)
 end
