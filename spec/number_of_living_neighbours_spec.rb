@@ -30,4 +30,10 @@ describe "#number_of_living_neighbours" do
     result = number_of_living_neighbours(grid, row: 0, column: 1)
     expect(result).to eq 0
   end
+
+  it "returns zero correctly even when the grid is wide" do
+    grid = [[:empty, :empty, :alive]]
+    result = number_of_living_neighbours(grid, row: 0, column: 0)
+    expect(result).to eq 0
+  end
 end
