@@ -28,7 +28,7 @@ describe "viewing the next generation in conway's game of life" do
   end
 
 
-  xit 'should return a non-empty grid when we implement a viable first generation' do
+  it 'should return a non-empty grid when we implement a viable first generation' do
     viable_grid = [
       [:empty, :empty, :empty,:empty],
       [:empty, :alive, :alive,:empty],
