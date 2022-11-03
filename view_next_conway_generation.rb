@@ -12,8 +12,14 @@ def view_next_conway_generation(generation)
 end
 
 def conway_rule(cell,number_of_living_neighbours)
-  :empty
+
+return :empty unless (cell == :alive && number_of_living_neighbours == 2) || number_of_living_neighbours == 3
+
+:alive
 end
+
+
+
 
 def number_of_living_neighbours(grid,row:,column:)
   above = grid[row - 1] unless row == 0
